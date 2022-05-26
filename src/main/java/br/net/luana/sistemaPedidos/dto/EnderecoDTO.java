@@ -16,12 +16,11 @@ public class EnderecoDTO extends MasterDTOImpl<Endereco, EnderecoDTO, Integer> {
     }
 
     public EnderecoDTO(Endereco entity) {
-        EnderecoDTO enderecoDTO = new EnderecoDTO();
-        enderecoDTO.setLogradouro(entity.getLogradouro());
-        enderecoDTO.setNumero(entity.getNumero());
-        enderecoDTO.setComplemento(entity.getComplemento());
-        enderecoDTO.setBairro(entity.getBairro());
-        enderecoDTO.setCidade(entity.getCidade());
+        this.logradouro = entity.getLogradouro();
+        this.numero = entity.getNumero();
+        this.complemento = entity.getComplemento();
+        this.bairro = entity.getBairro();
+        this.cidade = entity.getCidade();
     }
 
     @Override

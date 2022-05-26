@@ -8,9 +8,11 @@ import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 
 @Component
 public class ClienteDTO extends MasterDTOImpl<Cliente, ClienteDTO, Integer>
@@ -34,7 +36,7 @@ public class ClienteDTO extends MasterDTOImpl<Cliente, ClienteDTO, Integer>
 
     private String cpf;
 
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
 
     public ClienteDTO() {
     }
@@ -120,11 +122,11 @@ public class ClienteDTO extends MasterDTOImpl<Cliente, ClienteDTO, Integer>
         this.cpf = cpf;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 }

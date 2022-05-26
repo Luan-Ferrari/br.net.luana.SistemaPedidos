@@ -25,9 +25,8 @@ public class Contato implements MasterDomain, Serializable {
     public Contato() {
     }
 
-    public Contato(Integer id, Cliente cliente, String ddd, String contato, TipoContato tipoContato) {
+    public Contato(Integer id, String ddd, String contato, TipoContato tipoContato) {
         this.id = id;
-        this.cliente = cliente;
         this.ddd = ddd;
         this.contato = contato;
         this.tipoContato = (tipoContato == null) ? null : tipoContato.getCodigo();

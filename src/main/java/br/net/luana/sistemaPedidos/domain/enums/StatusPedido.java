@@ -1,15 +1,17 @@
 package br.net.luana.sistemaPedidos.domain.enums;
 
-public enum TipoContato {
+public enum StatusPedido {
 
-    telefone(1, "Somente Telefone"),
-    telefoneWhats(2, "Telefone e WhatssApp"),
-    email(3, "E-mail");
+    pedido(1, "Pedido"),
+    producao(2, "Em Produção"),
+    finalizado(3, "Finalizado"),
+    entregue(4, "Entregue");
+
 
     private int codigo;
     private String descricao;
 
-    TipoContato(int codigo, String descricao) {
+    StatusPedido(int codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
     }
@@ -22,14 +24,14 @@ public enum TipoContato {
         return descricao;
     }
 
-    public static TipoContato toEnum (Integer codigo) {
+    public static StatusPedido toEnum (Integer codigo) {
         if(codigo==null) {
             return null;
         }
 
-        for (TipoContato tipoContato : TipoContato.values()) {
-            if(codigo.equals(tipoContato.getCodigo())) {
-                return tipoContato;
+        for (StatusPedido statusPedido : StatusPedido.values()) {
+            if(codigo.equals(statusPedido.getCodigo())) {
+                return statusPedido;
             }
         }
 

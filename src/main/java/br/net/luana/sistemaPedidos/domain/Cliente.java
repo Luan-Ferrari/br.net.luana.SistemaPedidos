@@ -2,7 +2,8 @@ package br.net.luana.sistemaPedidos.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,19 +20,19 @@ public class Cliente implements MasterDomain, Serializable {
     private String sobrenome;
 
     @OneToMany(mappedBy = "cliente")
-    private List<Contato> contatos;
+    private List<Contato> contatos = new ArrayList<>();
 
     @OneToMany(mappedBy = "cliente")
-    private List<Endereco> enderecos;
+    private List<Endereco> enderecos = new ArrayList<>();
 
     private String cpf;
 
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
 
     public Cliente() {
     }
 
-    public Cliente(Integer id, String nome, String sobrenome, String cpf, Date dataNascimento) {
+    public Cliente(Integer id, String nome, String sobrenome, String cpf, LocalDate dataNascimento) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -87,11 +88,11 @@ public class Cliente implements MasterDomain, Serializable {
         this.cpf = cpf;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

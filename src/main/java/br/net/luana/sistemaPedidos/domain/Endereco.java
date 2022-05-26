@@ -25,10 +25,9 @@ public class Endereco implements MasterDomain, Serializable {
     public Endereco() {
     }
 
-    public Endereco(Integer id, Cliente cliente, String logradouro, String numero, String complemento,
+    public Endereco(Integer id, String logradouro, String numero, String complemento,
                     String bairro, String cidade) {
         this.id = id;
-        this.cliente = cliente;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;

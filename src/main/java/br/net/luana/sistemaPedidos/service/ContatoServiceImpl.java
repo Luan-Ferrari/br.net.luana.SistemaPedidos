@@ -14,6 +14,16 @@ public class ContatoServiceImpl extends MasterServiceImpl<Contato, Integer>
     @Autowired
     private ContatoRepository contatoRepository;
 
+    @Override
+    public Contato save(Contato entity) {
+        if (entity.getId() == null) {
+            contatoRepository.save(entity);
+        } else {
+            updateById(entity, entity.getId());
+        }
+        return entity;
+    }
+
     public ContatoServiceImpl(ContatoRepository contatoRepository) { super (contatoRepository);}
 
 
