@@ -30,9 +30,9 @@ public class DBService {
     public void instanciateTestDatabase() throws ParseException {
 
         //criando clientes
-        Cliente cli1 = new Cliente(null, "Marisa", "da Barra", "123", LocalDate.of(1980, Month.JULY, 21));
-        Cliente cli2 = new Cliente(null, "Joana", "Fonseca", null, null);
-        Cliente cli3 = new Cliente(null, "Thiago", null, "345", null);
+        Cliente cli1 = new Cliente(null, "Marisa", "da Barra", true, true, "123", LocalDate.of(1980, Month.JULY, 21));
+        Cliente cli2 = new Cliente(null, "Joana", "Fonseca", false, false, null, null);
+        Cliente cli3 = new Cliente(null, "Thiago", null, false, false,"345", null);
 
         //criando contatos
         Contato cont1 = new Contato(null, "54", "99988-7766", TipoContato.telefoneWhats);

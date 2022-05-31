@@ -19,6 +19,10 @@ public class Cliente implements MasterDomain, Serializable {
 
     private String sobrenome;
 
+    private Boolean precoAtacado;
+
+    private Boolean condicional;
+
     @OneToMany(mappedBy = "cliente")
     private List<Contato> contatos = new ArrayList<>();
 
@@ -32,10 +36,14 @@ public class Cliente implements MasterDomain, Serializable {
     public Cliente() {
     }
 
-    public Cliente(Integer id, String nome, String sobrenome, String cpf, LocalDate dataNascimento) {
+    public Cliente(Integer id, String nome, String sobrenome,
+                   Boolean precoAtacado, Boolean condicional,
+                   String cpf, LocalDate dataNascimento) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
+        this.precoAtacado = precoAtacado;
+        this.condicional = condicional;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
     }
@@ -62,6 +70,22 @@ public class Cliente implements MasterDomain, Serializable {
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
+    }
+
+    public Boolean getPrecoAtacado() {
+        return precoAtacado;
+    }
+
+    public void setPrecoAtacado(Boolean precoAtacado) {
+        this.precoAtacado = precoAtacado;
+    }
+
+    public Boolean getCondicional() {
+        return condicional;
+    }
+
+    public void setCondicional(Boolean condicional) {
+        this.condicional = condicional;
     }
 
     public List<Contato> getContatos() {

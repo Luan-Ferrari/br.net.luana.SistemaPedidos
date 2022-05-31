@@ -29,6 +29,12 @@ public class Pedido implements MasterDomain, Serializable {
     private Integer pacote;
 
     @ManyToMany
+    @JoinTable(name = "PEDIDO_ITEM",
+            joinColumns = @JoinColumn(name = "pedido_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id"))
+    private List<Item> itens = new ArrayList<>();
+
+    @ManyToMany
     @JoinTable(name = "PEDIDO_NOTA",
             joinColumns = @JoinColumn(name = "pedido_id"),
             inverseJoinColumns = @JoinColumn(name = "nota_id"))
