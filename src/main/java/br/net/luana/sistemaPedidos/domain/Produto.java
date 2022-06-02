@@ -1,6 +1,5 @@
 package br.net.luana.sistemaPedidos.domain;
 
-import br.net.luana.sistemaPedidos.domain.enums.StatusPedido;
 import br.net.luana.sistemaPedidos.domain.enums.StatusProduto;
 
 import javax.persistence.*;

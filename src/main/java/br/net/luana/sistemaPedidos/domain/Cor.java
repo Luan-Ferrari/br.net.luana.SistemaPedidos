@@ -16,6 +16,7 @@ public class Cor implements MasterDomain, Serializable {
     private Integer id;
 
     private Integer codigoNaColecao;
+    private Boolean disponivel;
 
     @ManyToOne
     @JoinColumn(name = "colecao_id")
@@ -24,9 +25,10 @@ public class Cor implements MasterDomain, Serializable {
     public Cor() {
     }
 
-    public Cor(Integer id, Integer codigoNaColecao, Colecao colecao) {
+    public Cor(Integer id, Integer codigoNaColecao, Boolean disponivel, Colecao colecao) {
         this.id = id;
         this.codigoNaColecao = codigoNaColecao;
+        this.disponivel = disponivel;
         this.colecao = colecao;
     }
 
@@ -45,6 +47,14 @@ public class Cor implements MasterDomain, Serializable {
 
     public void setCodigoNaColecao(Integer codigoNaColecao) {
         this.codigoNaColecao = codigoNaColecao;
+    }
+
+    public Boolean getDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(Boolean disponivel) {
+        this.disponivel = disponivel;
     }
 
     public Colecao getColecao() {

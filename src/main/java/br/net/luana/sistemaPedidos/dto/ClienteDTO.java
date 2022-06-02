@@ -1,8 +1,6 @@
 package br.net.luana.sistemaPedidos.dto;
 
 import br.net.luana.sistemaPedidos.domain.Cliente;
-import br.net.luana.sistemaPedidos.domain.Contato;
-import br.net.luana.sistemaPedidos.domain.Endereco;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +8,6 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -38,6 +35,10 @@ public class ClienteDTO extends MasterDTOImpl<Cliente, ClienteDTO, Integer>
 
     private LocalDate dataNascimento;
 
+    private Boolean precoAtacado;
+
+    private Boolean condicional;
+
     public ClienteDTO() {
     }
 
@@ -49,6 +50,8 @@ public class ClienteDTO extends MasterDTOImpl<Cliente, ClienteDTO, Integer>
         this.enderecos = enderecoDTO.makeListDTO(entity.getEnderecos());
         this.cpf = entity.getCpf();
         this.dataNascimento = entity.getDataNascimento();
+        this.precoAtacado = entity.getPrecoAtacado();
+        this.condicional = entity.getCondicional();
     }
 
     @Override
@@ -70,6 +73,8 @@ public class ClienteDTO extends MasterDTOImpl<Cliente, ClienteDTO, Integer>
         }
         cliente.setCpf(dto.getCpf());
         cliente.setDataNascimento(dto.getDataNascimento());
+        cliente.setPrecoAtacado(dto.getPrecoAtacado());
+        cliente.setCondicional(dto.getCondicional());
 
         return cliente;
     }
@@ -128,5 +133,21 @@ public class ClienteDTO extends MasterDTOImpl<Cliente, ClienteDTO, Integer>
 
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public Boolean getPrecoAtacado() {
+        return precoAtacado;
+    }
+
+    public void setPrecoAtacado(Boolean precoAtacado) {
+        this.precoAtacado = precoAtacado;
+    }
+
+    public Boolean getCondicional() {
+        return condicional;
+    }
+
+    public void setCondicional(Boolean condicional) {
+        this.condicional = condicional;
     }
 }

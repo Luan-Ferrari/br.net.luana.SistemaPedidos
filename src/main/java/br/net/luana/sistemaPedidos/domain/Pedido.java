@@ -113,6 +113,14 @@ public class Pedido implements MasterDomain, Serializable {
         return pacote;
     }
 
+    public List<Item> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
+    }
+
     public void setPacote(Integer pacote) {
         this.pacote = pacote;
     }

@@ -5,7 +5,9 @@ public enum StatusPedido {
     pedido(1, "Pedido"),
     producao(2, "Em Produção"),
     finalizado(3, "Finalizado"),
-    entregue(4, "Entregue");
+    entregue(4, "Entregue"),
+    pago(5, "Pago"),
+    acertofinalizado(6, "Acerto Finalizado");
 
 
     private int codigo;

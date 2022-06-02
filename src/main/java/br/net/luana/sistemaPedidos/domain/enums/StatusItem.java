@@ -11,7 +11,8 @@ public enum StatusItem {
     prontopedidofinalizado(7, "Pronto e Pedido Finalizado"),
     estoque(8, "Em Estoque"),
     vendido(9, "Vendido"),
-    devolvido(10, "Devolvido Pelo Cliente");
+    devolvido(10, "Devolvido Pelo Cliente"),
+    descartado(11, "Descartado");
 
 
     private int codigo;

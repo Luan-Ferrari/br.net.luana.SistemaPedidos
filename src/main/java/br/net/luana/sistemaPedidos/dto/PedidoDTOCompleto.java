@@ -1,10 +1,8 @@
 package br.net.luana.sistemaPedidos.dto;
 
-import br.net.luana.sistemaPedidos.domain.Nota;
 import br.net.luana.sistemaPedidos.domain.Pedido;
 import br.net.luana.sistemaPedidos.domain.enums.StatusPedido;
 import br.net.luana.sistemaPedidos.domain.enums.TipoPedido;
-import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -13,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class PedidoDTO extends MasterDTOImpl<Pedido, PedidoDTO, Integer>
+public class PedidoDTOCompleto extends MasterDTOImpl<Pedido, PedidoDTOCompleto, Integer>
         implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    private ItemDTO itemDTO = new ItemDTO();
     private NotaDTO notaDTO = new NotaDTO();
     private PagamentoDTO pagamentoDTO = new PagamentoDTO();
 
@@ -30,13 +29,14 @@ public class PedidoDTO extends MasterDTOImpl<Pedido, PedidoDTO, Integer>
 
     private Integer pacote;
 
+    private List<ItemDTO> itens = new ArrayList<>();
     private List<NotaDTO> notas = new ArrayList<>();
     private List<PagamentoDTO> pagamentos = new ArrayList<>();
 
-    public PedidoDTO() {
+    public PedidoDTOCompleto() {
     }
 
-    public PedidoDTO(Pedido entity) {
+    public PedidoDTOCompleto(Pedido entity) {
         this.id = entity.getId();
         this.tipoPedido = (entity.getTipoPedido() == null) ? null : entity.getTipoPedido().getCodigo();
         this.dataPedido = entity.getDataPedido();
@@ -44,17 +44,18 @@ public class PedidoDTO extends MasterDTOImpl<Pedido, PedidoDTO, Integer>
         this.dataEntrega = entity.getDataEntrega();
         this.statusPedido = (entity.getStatusPedido() == null ? null : entity.getStatusPedido().getCodigo());
         this.pacote = entity.getPacote();
+        this.itens = itemDTO.makeListDTO(entity.getItens());
         this.notas = notaDTO.makeListDTO(entity.getNotas());
         this.pagamentos = pagamentoDTO.makeListDTO(entity.getPagamentos());
     }
 
     @Override
-    public PedidoDTO makeDTO(Pedido entity) {
-        return new PedidoDTO(entity);
+    public PedidoDTOCompleto makeDTO(Pedido entity) {
+        return new PedidoDTOCompleto(entity);
     }
 
     @Override
-    public Pedido makeEntityFromDTO(PedidoDTO dto) {
+    public Pedido makeEntityFromDTO(PedidoDTOCompleto dto) {
         Pedido pedido = new Pedido();
         pedido.setId(dto.getId());
         pedido.setTipoPedido(TipoPedido.toEnum(dto.getTipoPedido()));
@@ -63,6 +64,9 @@ public class PedidoDTO extends MasterDTOImpl<Pedido, PedidoDTO, Integer>
         pedido.setDataEntrega(dto.getDataEntrega());
         pedido.setStatusPedido(StatusPedido.toEnum(dto.getStatusPedido()));
         pedido.setPacote(dto.getPacote());
+        for(ItemDTO itemDTO : dto.getItens()) {
+            pedido.getItens().add(itemDTO.makeEntityFromDTO(itemDTO));
+        }
         for (NotaDTO notaDTO : dto.getNotas()) {
             pedido.getNotas().add(notaDTO.makeEntityFromDTO(notaDTO));
         }
@@ -143,6 +147,14 @@ public class PedidoDTO extends MasterDTOImpl<Pedido, PedidoDTO, Integer>
 
     public void setPacote(Integer pacote) {
         this.pacote = pacote;
+    }
+
+    public List<ItemDTO> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemDTO> itens) {
+        this.itens = itens;
     }
 
     public List<NotaDTO> getNotas() {
