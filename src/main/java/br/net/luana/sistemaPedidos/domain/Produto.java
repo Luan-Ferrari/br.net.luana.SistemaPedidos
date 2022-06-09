@@ -30,6 +30,8 @@ public class Produto implements MasterDomain, Serializable {
     private List<Colecao> colecoes = new ArrayList<>();
 
 
+    @ManyToOne
+    @JoinColumn(name = "clase_produto")
     private ClasseProduto classeProduto;
 
     @ManyToMany
@@ -45,14 +47,13 @@ public class Produto implements MasterDomain, Serializable {
     }
 
     public Produto(Integer id, Integer codigoProduto, Boolean conjunto, Double valorAtacado, Double valorVarejo,
-                   StatusProduto statusProduto, ClasseProduto classeProduto) {
+                   StatusProduto statusProduto) {
         this.id = id;
         this.codigoProduto = codigoProduto;
         this.conjunto = conjunto;
         this.valorAtacado = valorAtacado;
         this.valorVarejo = valorVarejo;
         this.statusProduto = (statusProduto == null) ? null : statusProduto.getCodigo();
-        this.classeProduto = classeProduto;
     }
 
     @Override

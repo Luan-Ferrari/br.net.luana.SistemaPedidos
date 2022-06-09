@@ -34,7 +34,7 @@ public class OpcaoDTO extends MasterDTOImpl<Opcao, OpcaoDTO, Integer> {
         opcao.setId(dto.getId());
         opcao.setOpcao(dto.getOpcao());
         opcao.setAlteraPreco(dto.getAlteraPreco());
-        opcao.setAlteraPreco(dto.getAlteraPreco());
+        opcao.setValorAlteracao(dto.getValorAlteracao());
         opcao.setTextoLivre(dto.getTextoLivre());
         return opcao;
     }

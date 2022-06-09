@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 public class CorDTO extends MasterDTOImpl<Cor, CorDTO, Integer> {
 
     private Integer id;
-    private Integer codigoNaColecao;
     private Boolean disponivel;
 
     public CorDTO() {
@@ -17,7 +16,6 @@ public class CorDTO extends MasterDTOImpl<Cor, CorDTO, Integer> {
 
     public CorDTO(Cor entity) {
         this.id = entity.getId();
-        this.codigoNaColecao = entity.getCodigoNaColecao();
         this.disponivel = entity.getDisponivel();
     }
 
@@ -30,7 +28,6 @@ public class CorDTO extends MasterDTOImpl<Cor, CorDTO, Integer> {
     public Cor makeEntityFromDTO(CorDTO dto) {
         Cor cor = new Cor();
         cor.setId(dto.getId());
-        cor.setCodigoNaColecao(dto.getCodigoNaColecao());
         cor.setDisponivel(dto.getDisponivel());
         return cor;
     }
@@ -43,13 +40,6 @@ public class CorDTO extends MasterDTOImpl<Cor, CorDTO, Integer> {
         this.id = id;
     }
 
-    public Integer getCodigoNaColecao() {
-        return codigoNaColecao;
-    }
-
-    public void setCodigoNaColecao(Integer codigoNaColecao) {
-        this.codigoNaColecao = codigoNaColecao;
-    }
 
     public Boolean getDisponivel() {
         return disponivel;

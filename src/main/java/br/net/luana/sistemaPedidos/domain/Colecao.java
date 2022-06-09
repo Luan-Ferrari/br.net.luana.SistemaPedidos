@@ -16,15 +16,18 @@ public class Colecao implements MasterDomain, Serializable {
 
     private String nomeColecao;
 
-    @OneToMany(mappedBy = "colecao")
-    private List<Cor> cores = new ArrayList<>();
+    private Integer anoColecao;
+
+    @OneToMany(mappedBy = "idPK.colecao")
+    private List<ColecaoCor> itensCores = new ArrayList<>();
 
     public Colecao() {
     }
 
-    public Colecao(Integer id, String nomeColecao) {
+    public Colecao(Integer id, String nomeColecao, Integer anoColecao) {
         this.id = id;
         this.nomeColecao = nomeColecao;
+        this.anoColecao = anoColecao;
     }
 
     @Override
@@ -44,12 +47,36 @@ public class Colecao implements MasterDomain, Serializable {
         this.nomeColecao = nomeColecao;
     }
 
-    public List<Cor> getCores() {
-        return cores;
+    public Integer getAnoColecao() {
+        return anoColecao;
     }
 
-    public void setCores(List<Cor> cores) {
-        this.cores = cores;
+    public void setAnoColecao(Integer anoColecao) {
+        this.anoColecao = anoColecao;
+    }
+
+    public List<ColecaoCor> getItensCores() {
+        return itensCores;
+    }
+
+    public void setItensCores(List<ColecaoCor> itensCores) {
+        this.itensCores = itensCores;
+    }
+
+    public List<Cor> getCores() {
+        List<Cor> lista = new ArrayList<>();
+        for(ColecaoCor x : itensCores) {
+            lista.add(x.getCor());
+        }
+        return lista;
+    }
+
+    public List<Integer> getNumeros() {
+        List<Integer> lista = new ArrayList<>();
+        for(ColecaoCor x : itensCores) {
+            lista.add(x.getNumero());
+        }
+        return lista;
     }
 
     @Override

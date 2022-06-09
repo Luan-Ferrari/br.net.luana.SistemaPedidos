@@ -15,21 +15,17 @@ public class Cor implements MasterDomain, Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer codigoNaColecao;
     private Boolean disponivel;
 
-    @ManyToOne
-    @JoinColumn(name = "colecao_id")
-    private Colecao colecao;
+    @OneToMany(mappedBy = "idPK.cor")
+    private List<ColecaoCor> itensCores = new ArrayList<>();
 
     public Cor() {
     }
 
-    public Cor(Integer id, Integer codigoNaColecao, Boolean disponivel, Colecao colecao) {
+    public Cor(Integer id, Boolean disponivel) {
         this.id = id;
-        this.codigoNaColecao = codigoNaColecao;
         this.disponivel = disponivel;
-        this.colecao = colecao;
     }
 
     @Override
@@ -41,14 +37,6 @@ public class Cor implements MasterDomain, Serializable {
         this.id = id;
     }
 
-    public Integer getCodigoNaColecao() {
-        return codigoNaColecao;
-    }
-
-    public void setCodigoNaColecao(Integer codigoNaColecao) {
-        this.codigoNaColecao = codigoNaColecao;
-    }
-
     public Boolean getDisponivel() {
         return disponivel;
     }
@@ -57,12 +45,20 @@ public class Cor implements MasterDomain, Serializable {
         this.disponivel = disponivel;
     }
 
-    public Colecao getColecao() {
-        return colecao;
+    public List<ColecaoCor> getItensCores() {
+        return itensCores;
     }
 
-    public void setColecao(Colecao colecao) {
-        this.colecao = colecao;
+    public void setItensCores(List<ColecaoCor> itensCores) {
+        this.itensCores = itensCores;
+    }
+
+    public List<Colecao> getColecoes() {
+        List<Colecao> lista = new ArrayList<>();
+        for(ColecaoCor x : itensCores) {
+            lista.add(x.getColecao());
+        }
+        return lista;
     }
 
     @Override

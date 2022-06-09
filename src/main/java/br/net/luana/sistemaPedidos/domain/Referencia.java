@@ -27,13 +27,11 @@ public class Referencia implements MasterDomain, Serializable {
     public Referencia() {
     }
 
-    public Referencia(Integer id, Integer codigo, Boolean alteraPreco, Double valorAlteracao,
-                      ClasseProduto classeProduto) {
+    public Referencia(Integer id, Integer codigo, Boolean alteraPreco, Double valorAlteracao) {
         this.id = id;
         this.codigo = codigo;
         this.alteraPreco = alteraPreco;
         this.valorAlteracao = valorAlteracao;
-        this.classeProduto = classeProduto;
     }
 
     @Override

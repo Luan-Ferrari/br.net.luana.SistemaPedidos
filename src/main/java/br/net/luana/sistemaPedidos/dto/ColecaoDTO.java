@@ -2,6 +2,7 @@ package br.net.luana.sistemaPedidos.dto;
 
 import br.net.luana.sistemaPedidos.domain.Colecao;
 
+import br.net.luana.sistemaPedidos.domain.ColecaoCor;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -18,7 +19,11 @@ public class ColecaoDTO extends MasterDTOImpl<Colecao, ColecaoDTO, Integer>
 
     private Integer id;
     private String nomeColecao;
+    private Integer anoColecao;
+
     private List<CorDTO> cores = new ArrayList<>();
+
+    private List<Integer> numeros = new ArrayList<>();
 
     public ColecaoDTO() {
     }
@@ -26,7 +31,9 @@ public class ColecaoDTO extends MasterDTOImpl<Colecao, ColecaoDTO, Integer>
     public ColecaoDTO(Colecao entity) {
         this.id = entity.getId();
         this.nomeColecao = entity.getNomeColecao();
+        this.anoColecao = entity.getAnoColecao();
         this.cores = corDTO.makeListDTO(entity.getCores());
+        this.numeros = entity.getNumeros();
     }
 
     @Override
@@ -36,13 +43,22 @@ public class ColecaoDTO extends MasterDTOImpl<Colecao, ColecaoDTO, Integer>
 
     @Override
     public Colecao makeEntityFromDTO(ColecaoDTO dto) {
-        Colecao colecao = new Colecao();
-        colecao.setId(dto.getId());
-        colecao.setNomeColecao(dto.getNomeColecao());
-        for (CorDTO corDTO : dto.getCores()) {
-            colecao.getCores().add(corDTO.makeEntityFromDTO(corDTO));
+        try {
+            Colecao colecao = new Colecao();
+            colecao.setId(dto.getId());
+            colecao.setNomeColecao(dto.getNomeColecao());
+            colecao.setAnoColecao((dto.getAnoColecao()));
+            for (int i = 0; i < cores.size(); i++) {
+                ColecaoCor colecaoCor = new ColecaoCor(colecao,
+                        corDTO.makeEntityFromDTO(cores.get(i)),
+                        numeros.get(i));
+                colecao.getItensCores().add(colecaoCor);
+            }
+            return colecao;
+        } catch (IndexOutOfBoundsException e) {
+            throw new IndexOutOfBoundsException(cores.size() + " cores para "
+                    + numeros.size() + " numeros");
         }
-        return colecao;
     }
 
     public Integer getId() {
@@ -61,11 +77,27 @@ public class ColecaoDTO extends MasterDTOImpl<Colecao, ColecaoDTO, Integer>
         this.nomeColecao = nomeColecao;
     }
 
+    public Integer getAnoColecao() {
+        return anoColecao;
+    }
+
+    public void setAnoColecao(Integer anoColecao) {
+        this.anoColecao = anoColecao;
+    }
+
     public List<CorDTO> getCores() {
         return cores;
     }
 
     public void setCores(List<CorDTO> cores) {
         this.cores = cores;
+    }
+
+    public List<Integer> getNumeros() {
+        return numeros;
+    }
+
+    public void setNumeros(List<Integer> numeros) {
+        this.numeros = numeros;
     }
 }

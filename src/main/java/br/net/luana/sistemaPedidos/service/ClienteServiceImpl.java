@@ -25,7 +25,6 @@ public class ClienteServiceImpl extends MasterServiceImpl<Cliente, Integer>
     @Override
     public Cliente save(Cliente entity) {
         entity = clienteRepository.save(entity);
-        System.out.println(entity.getContatos());
         for (Contato contato : entity.getContatos()) {
             contato.setCliente(entity);
             contatoService.save(contato);
