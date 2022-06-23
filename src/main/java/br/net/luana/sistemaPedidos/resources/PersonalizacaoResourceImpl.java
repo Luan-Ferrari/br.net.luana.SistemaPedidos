@@ -2,6 +2,7 @@ package br.net.luana.sistemaPedidos.resources;
 
 import br.net.luana.sistemaPedidos.domain.Colecao;
 import br.net.luana.sistemaPedidos.domain.Cor;
+import br.net.luana.sistemaPedidos.domain.Opcao;
 import br.net.luana.sistemaPedidos.domain.Personalizacao;
 import br.net.luana.sistemaPedidos.dto.ColecaoDTO;
 import br.net.luana.sistemaPedidos.dto.CorDTO;
@@ -30,6 +31,22 @@ public class PersonalizacaoResourceImpl extends MasterResourceImpl<Personalizaca
 
     public PersonalizacaoResourceImpl(PersonalizacaoService personalizacaoService) {
         super(personalizacaoService);
+    }
+
+    @Override
+    public ResponseEntity<Void> adicionarOpcoes(List<OpcaoDTO> opcoes, Integer entityId) {
+        List<Opcao> opcoes1 = new ArrayList<>();
+        for (OpcaoDTO opcaoDTO : opcoes) {
+            opcoes1.add(opcaoDTO.makeEntityFromDTO(opcaoDTO));
+        }
+        personalizacaoService.adicionarOpcao(entityId, opcoes1);
+        return ResponseEntity.noContent().build();
+    }
+
+    @Override
+    public ResponseEntity<Void> excluirOpcao(OpcaoDTO opcao, Integer entityId) {
+        personalizacaoService.excluirOpcao(entityId, opcaoDTO.makeEntityFromDTO(opcao));
+        return ResponseEntity.noContent().build();
     }
 
 }

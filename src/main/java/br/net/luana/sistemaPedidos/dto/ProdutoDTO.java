@@ -30,7 +30,7 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
 
     private Integer statusProduto;
 
-    private ClasseProdutoDTO classeProduto;
+    private ClasseProdutoDTO classeProduto = new ClasseProdutoDTO();
 
     private List<ColecaoDTO> colecoes = new ArrayList<>();
 

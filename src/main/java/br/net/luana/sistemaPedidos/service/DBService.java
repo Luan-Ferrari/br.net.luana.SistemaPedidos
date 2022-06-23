@@ -1,11 +1,13 @@
 package br.net.luana.sistemaPedidos.service;
 
 import br.net.luana.sistemaPedidos.domain.*;
+import br.net.luana.sistemaPedidos.domain.enums.Perfil;
 import br.net.luana.sistemaPedidos.domain.enums.StatusProduto;
 import br.net.luana.sistemaPedidos.domain.enums.Tamanho;
 import br.net.luana.sistemaPedidos.domain.enums.TipoContato;
 import br.net.luana.sistemaPedidos.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,6 +58,10 @@ public class DBService {
     private ReferenciaRepository referenciaRepository;
     @Autowired
     private TamanhosAceitosRepository tamanhosAceitosRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public void instanciateTestDatabase() throws ParseException {
 
@@ -215,10 +221,18 @@ public class DBService {
         prod6.getTamanhosAceitos().addAll(Arrays.asList(tam1, tam2, tam3));
         prod7.getTamanhosAceitos().addAll(Arrays.asList(tam3, tam4));
 
+        //criando usuarios
+        Usuario usuario1 = new Usuario(null, "Luan",
+                bCryptPasswordEncoder.encode("hakunaMatata"));
+        Usuario usuario2 = new Usuario(null, "FabiSertao",
+                bCryptPasswordEncoder.encode("sertao"));
+        Usuario usuario3 = new Usuario(null, "Tamiris",
+                bCryptPasswordEncoder.encode("tami"));
+        Usuario usuario4 = new Usuario(null, "ClienteQualquer",
+                bCryptPasswordEncoder.encode("senhaQualquer"));
 
-
-
-
+        //criando administradores
+        usuario1.addPerfil(Perfil.ADMIN);
 
         //persistindo clientes
         clienteRepository.saveAll(Arrays.asList(cli1, cli2, cli3));
@@ -255,6 +269,9 @@ public class DBService {
 
         //persistindo produtos
         produtoRepository.saveAll(Arrays.asList(prod1, prod2, prod3, prod4, prod5, prod6, prod7));
+
+        //persistindo usuarios
+        usuarioRepository.saveAll(Arrays.asList(usuario1, usuario2, usuario3, usuario4));
     }
 
 
