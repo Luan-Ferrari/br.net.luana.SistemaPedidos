@@ -1,16 +1,10 @@
 package br.net.luana.sistemaPedidos.resources;
 
-import br.net.luana.sistemaPedidos.domain.Colecao;
-import br.net.luana.sistemaPedidos.domain.Cor;
 import br.net.luana.sistemaPedidos.domain.Opcao;
 import br.net.luana.sistemaPedidos.domain.Personalizacao;
-import br.net.luana.sistemaPedidos.dto.ColecaoDTO;
-import br.net.luana.sistemaPedidos.dto.CorDTO;
 import br.net.luana.sistemaPedidos.dto.OpcaoDTO;
 import br.net.luana.sistemaPedidos.dto.PersonalizacaoDTO;
-import br.net.luana.sistemaPedidos.service.ColecaoService;
 import br.net.luana.sistemaPedidos.service.PersonalizacaoService;
-import br.net.luana.sistemaPedidos.service.PersonalizacaoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/personalizacao")
-public class PersonalizacaoResourceImpl extends MasterResourceImpl<Personalizacao, PersonalizacaoDTO, Integer>
+public class PersonalizacaoResourceImpl extends MasterResourceAllEndpointsToUserImpl<Personalizacao, PersonalizacaoDTO, Integer>
         implements PersonalizacaoResource {
 
     @Autowired

@@ -24,7 +24,7 @@ public class UsuarioDTO extends MasterDTOImpl<Usuario, UsuarioDTO, Integer>
     private static final long serialVersionUID = 1L;
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     private Integer id;
 

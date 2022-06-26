@@ -1,12 +1,9 @@
 package br.net.luana.sistemaPedidos.resources;
 
-import br.net.luana.sistemaPedidos.domain.Cliente;
 import br.net.luana.sistemaPedidos.domain.Colecao;
 import br.net.luana.sistemaPedidos.domain.Cor;
-import br.net.luana.sistemaPedidos.dto.ClienteDTO;
 import br.net.luana.sistemaPedidos.dto.ColecaoDTO;
 import br.net.luana.sistemaPedidos.dto.CorDTO;
-import br.net.luana.sistemaPedidos.service.ClienteService;
 import br.net.luana.sistemaPedidos.service.ColecaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/colecao")
-public class ColecaoResourceImpl extends MasterResourceImpl<Colecao, ColecaoDTO, Integer>
+public class ColecaoResourceImpl extends MasterResourceAllEndpointsToUserImpl<Colecao, ColecaoDTO, Integer>
         implements ColecaoResource {
 
     @Autowired

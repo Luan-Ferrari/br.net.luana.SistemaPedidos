@@ -1,10 +1,7 @@
 package br.net.luana.sistemaPedidos.resources;
 
-import br.net.luana.sistemaPedidos.domain.Opcao;
 import br.net.luana.sistemaPedidos.domain.Referencia;
-import br.net.luana.sistemaPedidos.dto.OpcaoDTO;
 import br.net.luana.sistemaPedidos.dto.ReferenciaDTO;
-import br.net.luana.sistemaPedidos.service.OpcaoService;
 import br.net.luana.sistemaPedidos.service.ReferenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/referencia")
-public class ReferenciaResourceImpl extends MasterResourceImpl<Referencia, ReferenciaDTO, Integer>
+public class ReferenciaResourceImpl extends MasterResourceAllEndpointsToUserImpl<Referencia, ReferenciaDTO, Integer>
         implements ReferenciaResource {
 
     @Autowired

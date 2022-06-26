@@ -1,13 +1,17 @@
 package br.net.luana.sistemaPedidos.service;
 
 import br.net.luana.sistemaPedidos.domain.MasterDomain;
+import br.net.luana.sistemaPedidos.domain.enums.Perfil;
 import br.net.luana.sistemaPedidos.repositories.MasterRepository;
+import br.net.luana.sistemaPedidos.security.UserSS;
+import br.net.luana.sistemaPedidos.service.exceptions.AuthorizationException;
 import br.net.luana.sistemaPedidos.service.exceptions.DataIntegrityException;
 import br.net.luana.sistemaPedidos.service.exceptions.ObjectNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.List;
 import java.util.Optional;
@@ -61,4 +65,5 @@ public abstract class MasterServiceImpl<T extends MasterDomain, ID extends Integ
     }
 
     protected abstract void updateData(T updateEntity, T entity);
-}
+
+   }

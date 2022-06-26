@@ -1,10 +1,7 @@
 package br.net.luana.sistemaPedidos.resources;
 
-import br.net.luana.sistemaPedidos.domain.Opcao;
 import br.net.luana.sistemaPedidos.domain.TamanhosAceitos;
-import br.net.luana.sistemaPedidos.dto.OpcaoDTO;
 import br.net.luana.sistemaPedidos.dto.TamanhosAceitosDTO;
-import br.net.luana.sistemaPedidos.service.OpcaoService;
 import br.net.luana.sistemaPedidos.service.TamanhosAceitosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/tamanhosAceitos")
-public class TamanhosAceitosResourceImpl extends MasterResourceImpl<TamanhosAceitos, TamanhosAceitosDTO, Integer>
+public class TamanhosAceitosResourceImpl extends MasterResourceAllEndpointsToUserImpl<TamanhosAceitos, TamanhosAceitosDTO, Integer>
         implements TamanhosAceitosResource {
 
     @Autowired

@@ -1,26 +1,20 @@
 package br.net.luana.sistemaPedidos.resources;
 
 import br.net.luana.sistemaPedidos.domain.ClasseProduto;
-import br.net.luana.sistemaPedidos.domain.Opcao;
 import br.net.luana.sistemaPedidos.domain.Personalizacao;
-import br.net.luana.sistemaPedidos.domain.Referencia;
 import br.net.luana.sistemaPedidos.dto.*;
 import br.net.luana.sistemaPedidos.service.ClasseProdutoService;
-import br.net.luana.sistemaPedidos.service.OpcaoService;
-import br.net.luana.sistemaPedidos.service.PersonalizacaoService;
-import br.net.luana.sistemaPedidos.service.ReferenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/classeProduto")
-public class ClasseProdutoResourceImpl extends MasterResourceImpl<ClasseProduto, ClasseProdutoDTO, Integer>
+public class ClasseProdutoResourceImpl extends MasterResourceAllEndpointsToUserImpl<ClasseProduto, ClasseProdutoDTO, Integer>
         implements ClasseProdutoResource {
 
     @Autowired

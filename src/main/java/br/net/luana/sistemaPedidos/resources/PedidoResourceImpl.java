@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/pedido")
-public class PedidoResourceImpl extends MasterResourceImpl<Pedido, PedidoDTOCompleto, Integer>
+public class PedidoResourceImpl extends MasterResourceAllEndpointsToUserImpl<Pedido, PedidoDTOCompleto, Integer>
         implements PedidoResource {
 
     public PedidoResourceImpl(PedidoService pedidoService) {

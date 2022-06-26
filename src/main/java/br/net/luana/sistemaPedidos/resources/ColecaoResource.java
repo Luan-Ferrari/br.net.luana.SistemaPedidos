@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-public interface ColecaoResource extends MasterResource<Colecao, ColecaoDTO, Integer> {
+public interface ColecaoResource extends MasterResourceOnlyGetEndpointToUser<Colecao, ColecaoDTO, Integer> {
 
     @PatchMapping("/{entityId}/adicionar")
     ResponseEntity<Void> adicionar(@RequestBody ColecaoDTO entity, @PathVariable Integer entityId);

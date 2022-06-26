@@ -1,5 +1,6 @@
 package br.net.luana.sistemaPedidos.resources.exceptions;
 
+import br.net.luana.sistemaPedidos.service.exceptions.AuthorizationException;
 import br.net.luana.sistemaPedidos.service.exceptions.DataIntegrityException;
 import br.net.luana.sistemaPedidos.service.exceptions.NumeracaoRepetidaException;
 import br.net.luana.sistemaPedidos.service.exceptions.ObjectNotFoundException;
@@ -39,5 +40,12 @@ public class ResourceExceptionHandler {
         StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),
                 "Cores sem numeração", e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+    }
+
+    @ExceptionHandler(AuthorizationException.class)
+    public ResponseEntity<StandardError> authorization(AuthorizationException e, HttpServletRequest request) {
+        StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.FORBIDDEN.value(),
+                "Acesso negado", e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(err);
     }
 }

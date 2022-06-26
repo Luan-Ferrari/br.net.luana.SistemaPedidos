@@ -13,14 +13,14 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-public abstract class MasterResourceImpl <T extends MasterDomain, D extends MasterDTOImpl, ID extends Integer>
-        implements MasterResource<T, D, ID> {
+public abstract class MasterResourceAllEndpointsToUserImpl<T extends MasterDomain, D extends MasterDTOImpl, ID extends Integer>
+        implements MasterResourceAllEndpointsToUser<T, D, ID> {
 
     @Autowired
     private D dto;
     private MasterService masterService;
 
-    public MasterResourceImpl(MasterService masterService) {
+    public MasterResourceAllEndpointsToUserImpl(MasterService masterService) {
         this.masterService = masterService;
     }
 
@@ -51,8 +51,8 @@ public abstract class MasterResourceImpl <T extends MasterDomain, D extends Mast
     }
 
     @Override
-    public ResponseEntity<Void> update(T entity, ID entityId) {
-        entity = (T) masterService.updateById(entity, entityId);
+    public ResponseEntity<Void> update(D dto, ID entityId) {
+        T entity = (T) masterService.updateById(dto.makeEntityFromDTO(dto), entityId);
         return ResponseEntity.noContent().build();
     }
 
