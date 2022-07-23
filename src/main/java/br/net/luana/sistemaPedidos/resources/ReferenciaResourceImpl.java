@@ -4,6 +4,7 @@ import br.net.luana.sistemaPedidos.domain.Referencia;
 import br.net.luana.sistemaPedidos.dto.ReferenciaDTO;
 import br.net.luana.sistemaPedidos.service.ReferenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -67,9 +67,9 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
         for (ColecaoDTO colecaoDTO : dto.getColecoes()) {
             produto.getColecoes().add(colecaoDTO.makeEntityFromDTO(colecaoDTO));
         }
-        for (TamanhosAceitosDTO tamanhosAceitosDTO : dto.getTamanhosAceitos()) {
-            produto.getTamanhosAceitos().add(tamanhosAceitosDTO.makeEntityFromDTO(tamanhosAceitosDTO));
-        }
+//        for (TamanhosAceitosDTO tamanhosAceitosDTO : dto.getTamanhosAceitos()) {
+//            produto.getTamanhosAceitos().add(tamanhosAceitosDTO.makeEntityFromDTO(tamanhosAceitosDTO));
+//        }
 
         return produto;
     }
