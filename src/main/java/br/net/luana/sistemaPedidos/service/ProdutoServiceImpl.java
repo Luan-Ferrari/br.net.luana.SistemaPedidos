@@ -5,8 +5,10 @@ import br.net.luana.sistemaPedidos.repositories.OpcaoRepository;
 import br.net.luana.sistemaPedidos.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class ProdutoServiceImpl extends MasterServiceImpl<Produto, Integer>
         implements ProdutoService {
 

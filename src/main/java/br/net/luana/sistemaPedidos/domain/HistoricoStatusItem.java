@@ -36,9 +36,9 @@ public class HistoricoStatusItem implements MasterDomain, Serializable {
         this.id = id;
         this.item = item;
         this.dataHoraStatusAnterior = dataHoraStatusAnterior;
-        this.statusAnterior = (statusAnterior == null) ? null : statusAnterior.getCodigo();
+        this.statusAnterior = (statusAnterior == null) ? null : statusAnterior.getId();
         this.dataHoraStatusAtual = dataHoraStatusAtual;
-        this.statusAtual = (statusAtual == null) ? null : statusAtual.getCodigo();
+        this.statusAtual = (statusAtual == null) ? null : statusAtual.getId();
         this.motivo = motivo;
     }
 
@@ -72,7 +72,7 @@ public class HistoricoStatusItem implements MasterDomain, Serializable {
     }
 
     public void setStatusAnterior(StatusItem statusAnterior) {
-        this.statusAnterior = (statusAnterior == null) ? null : statusAnterior.getCodigo();
+        this.statusAnterior = (statusAnterior == null) ? null : statusAnterior.getId();
     }
 
     public LocalDateTime getDataHoraStatusAtual() {
@@ -88,7 +88,7 @@ public class HistoricoStatusItem implements MasterDomain, Serializable {
     }
 
     public void setStatusAtual(StatusItem statusAtual) {
-        this.statusAtual = (statusAtual == null) ? null : statusAtual.getCodigo();
+        this.statusAtual = (statusAtual == null) ? null : statusAtual.getId();
     }
 
     public String getMotivo() {

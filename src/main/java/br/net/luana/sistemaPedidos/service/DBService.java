@@ -57,8 +57,6 @@ public class DBService {
     @Autowired
     private ReferenciaRepository referenciaRepository;
     @Autowired
-    private TamanhosAceitosRepository tamanhosAceitosRepository;
-    @Autowired
     private UsuarioRepository usuarioRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -177,22 +175,15 @@ public class DBService {
         classeProduto2.getPersonalizacoes().addAll(Arrays.asList(personal2));
         classeProduto3.getPersonalizacoes().addAll(Arrays.asList(personal2, personal3, personal4));
 
-        //criando tamanhos
-        TamanhosAceitos tam1 = new TamanhosAceitos(null, Tamanho.p);
-        TamanhosAceitos tam2 = new TamanhosAceitos(null, Tamanho.m);
-        TamanhosAceitos tam3 = new TamanhosAceitos(null, Tamanho.g);
-        TamanhosAceitos tam4 = new TamanhosAceitos(null, Tamanho.gg);
-        TamanhosAceitos tam5 = new TamanhosAceitos(null, Tamanho.t2inf);
-        TamanhosAceitos tam6 = new TamanhosAceitos(null, Tamanho.t2bebe);
 
         //criando produtos
-        Produto prod1 = new Produto(null, 1101, true, 20.00, 25.00, StatusProduto.ativo);
-        Produto prod2 = new Produto(null, 3101, false, 40.00, 48.00, StatusProduto.ativo);
-        Produto prod3 = new Produto(null, 3102, false, 50.00, 57.00, StatusProduto.ativo);
-        Produto prod4 = new Produto(null, 3106, false, 50.00, 59.00, StatusProduto.ativo);
-        Produto prod5 = new Produto(null, 2101, false, 80.00, 92.00, StatusProduto.ativo);
-        Produto prod6 = new Produto(null, 2102, false, 70.00, 80.00, StatusProduto.ativo);
-        Produto prod7 = new Produto(null, 1201, false, 30.00, 38.00, StatusProduto.ativo);
+        Produto prod1 = new Produto(null, 1101, "conjunto lingerie", true, 20.00, 25.00, StatusProduto.ativo);
+        Produto prod2 = new Produto(null, 3101, "calcinha", false, 40.00, 48.00, StatusProduto.ativo);
+        Produto prod3 = new Produto(null, 3102, "pijama infantil", false, 50.00, 57.00, StatusProduto.ativo);
+        Produto prod4 = new Produto(null, 3106, "pijama casaco", false, 50.00, 59.00, StatusProduto.ativo);
+        Produto prod5 = new Produto(null, 2101, "moleton",false, 80.00, 92.00, StatusProduto.ativo);
+        Produto prod6 = new Produto(null, 2102, "cueca", false, 70.00, 80.00, StatusProduto.ativo);
+        Produto prod7 = new Produto(null, 1201, "lencol", false, 30.00, 38.00, StatusProduto.ativo);
 
         //associando produto e classe produto
         prod1.setClasseProduto(classeProduto1);
@@ -212,24 +203,18 @@ public class DBService {
         prod6.getColecoes().addAll(Arrays.asList(col1, col3));
         prod7.getColecoes().addAll(Arrays.asList(col1, col3));
 
-        //associando produtos e tamanhos disponiveis
-        prod1.getTamanhosAceitos().addAll(Arrays.asList(tam1, tam2, tam3, tam4, tam5, tam6));
-        prod2.getTamanhosAceitos().addAll(Arrays.asList(tam5, tam6));
-        prod3.getTamanhosAceitos().addAll(Arrays.asList(tam3, tam4, tam5, tam6));
-        prod4.getTamanhosAceitos().addAll(Arrays.asList(tam1, tam2));
-        prod5.getTamanhosAceitos().addAll(Arrays.asList(tam1, tam2, tam3));
-        prod6.getTamanhosAceitos().addAll(Arrays.asList(tam1, tam2, tam3));
-        prod7.getTamanhosAceitos().addAll(Arrays.asList(tam3, tam4));
+        //associando produtos e tamanhos
+        prod1.getTamanhosAceitos().addAll(Arrays.asList(101, 102, 103));
 
         //criando usuarios
         Usuario usuario1 = new Usuario(null, "Luan",
-                bCryptPasswordEncoder.encode("hakunaMatata"));
+                bCryptPasswordEncoder.encode("hakunaMatata"), "Luan", "Ferrari");
         Usuario usuario2 = new Usuario(null, "FabiSertao",
-                bCryptPasswordEncoder.encode("sertao"));
+                bCryptPasswordEncoder.encode("sertao"), "Fabiana", "Casanova");
         Usuario usuario3 = new Usuario(null, "Tamiris",
-                bCryptPasswordEncoder.encode("tami"));
+                bCryptPasswordEncoder.encode("tami"), "Tamiris", "Vicentini");
         Usuario usuario4 = new Usuario(null, "ClienteQualquer",
-                bCryptPasswordEncoder.encode("senhaQualquer"));
+                bCryptPasswordEncoder.encode("senhaQualquer"), "Cliente", "Qualquer");
 
         //criando administradores
         usuario1.addPerfil(Perfil.ADMIN);
@@ -263,9 +248,6 @@ public class DBService {
 
         //persistindo classe_produto
         classeProdutoRepository.saveAll(Arrays.asList(classeProduto1, classeProduto2, classeProduto3));
-
-        //persistindo tamanhosAceitos
-        tamanhosAceitosRepository.saveAll(Arrays.asList(tam1, tam2, tam3, tam4, tam5, tam6));
 
         //persistindo produtos
         produtoRepository.saveAll(Arrays.asList(prod1, prod2, prod3, prod4, prod5, prod6, prod7));

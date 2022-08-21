@@ -1,12 +1,11 @@
 package br.net.luana.sistemaPedidos.domain;
 
 import br.net.luana.sistemaPedidos.domain.enums.StatusProduto;
+import br.net.luana.sistemaPedidos.domain.enums.Tamanho;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Produto implements MasterDomain, Serializable {
@@ -17,6 +16,8 @@ public class Produto implements MasterDomain, Serializable {
     private Integer id;
 
     private Integer codigoProduto;
+    private String descricao;
+
     private Boolean conjunto;
     private Double valorAtacado;
     private Double valorVarejo;
@@ -34,11 +35,9 @@ public class Produto implements MasterDomain, Serializable {
     @JoinColumn(name = "clase_produto")
     private ClasseProduto classeProduto;
 
-    @ManyToMany
-    @JoinTable(name = "PRODUTO_TAMANHOS_ACEITOS",
-            joinColumns = @JoinColumn(name = "produto_id"),
-            inverseJoinColumns = @JoinColumn(name = "tamanho_aceito_id"))
-    private List<TamanhosAceitos> tamanhosAceitos = new ArrayList<>();
+    @ElementCollection
+    @CollectionTable(name = "produto_tamanhos_aceitos")
+    private Set<Integer> tamanhosAceitos = new HashSet<>();
 
     @OneToMany(mappedBy = "produto")
     private List<Item> itens = new ArrayList<>();
@@ -46,14 +45,15 @@ public class Produto implements MasterDomain, Serializable {
     public Produto() {
     }
 
-    public Produto(Integer id, Integer codigoProduto, Boolean conjunto, Double valorAtacado, Double valorVarejo,
+    public Produto(Integer id, Integer codigoProduto, String descricao, Boolean conjunto, Double valorAtacado, Double valorVarejo,
                    StatusProduto statusProduto) {
         this.id = id;
         this.codigoProduto = codigoProduto;
+        this.descricao = descricao;
         this.conjunto = conjunto;
         this.valorAtacado = valorAtacado;
         this.valorVarejo = valorVarejo;
-        this.statusProduto = (statusProduto == null) ? null : statusProduto.getCodigo();
+        this.statusProduto = (statusProduto == null) ? null : statusProduto.getId();
     }
 
     @Override
@@ -71,6 +71,14 @@ public class Produto implements MasterDomain, Serializable {
 
     public void setCodigoProduto(Integer codigoProduto) {
         this.codigoProduto = codigoProduto;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Boolean getConjunto() {
@@ -102,7 +110,7 @@ public class Produto implements MasterDomain, Serializable {
     }
 
     public void setStatusProduto(StatusProduto statusProduto) {
-        this.statusProduto = (statusProduto == null) ? null : statusProduto.getCodigo();
+        this.statusProduto = (statusProduto == null) ? null : statusProduto.getId();
     }
 
     public List<Colecao> getColecoes() {
@@ -121,11 +129,11 @@ public class Produto implements MasterDomain, Serializable {
         this.classeProduto = classeProduto;
     }
 
-    public List<TamanhosAceitos> getTamanhosAceitos() {
+    public Set<Integer> getTamanhosAceitos() {
         return tamanhosAceitos;
     }
 
-    public void setTamanhosAceitos(List<TamanhosAceitos> tamanhosAceitos) {
+    public void setTamanhosAceitos(Set<Integer> tamanhosAceitos) {
         this.tamanhosAceitos = tamanhosAceitos;
     }
 

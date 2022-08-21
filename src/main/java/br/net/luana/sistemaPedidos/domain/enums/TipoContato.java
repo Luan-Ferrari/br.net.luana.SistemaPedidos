@@ -6,33 +6,33 @@ public enum TipoContato {
     telefoneWhats(2, "Telefone e WhatssApp"),
     email(3, "E-mail");
 
-    private int codigo;
+    private int id;
     private String descricao;
 
-    TipoContato(int codigo, String descricao) {
-        this.codigo = codigo;
+    TipoContato(int id, String descricao) {
+        this.id = id;
         this.descricao = descricao;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public static TipoContato toEnum (Integer codigo) {
-        if(codigo==null) {
+    public static TipoContato toEnum (Integer id) {
+        if(id==null) {
             return null;
         }
 
         for (TipoContato tipoContato : TipoContato.values()) {
-            if(codigo.equals(tipoContato.getCodigo())) {
+            if(id.equals(tipoContato.getId())) {
                 return tipoContato;
             }
         }
 
-        throw new IllegalArgumentException(("Id inválido: " + codigo));
+        throw new IllegalArgumentException(("Id inválido: " + id));
     }
 }

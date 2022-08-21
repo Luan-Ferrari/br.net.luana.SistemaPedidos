@@ -10,33 +10,33 @@ public enum StatusPedido {
     acertofinalizado(6, "Acerto Finalizado");
 
 
-    private int codigo;
+    private int id;
     private String descricao;
 
-    StatusPedido(int codigo, String descricao) {
-        this.codigo = codigo;
+    StatusPedido(int id, String descricao) {
+        this.id = id;
         this.descricao = descricao;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public static StatusPedido toEnum (Integer codigo) {
-        if(codigo==null) {
+    public static StatusPedido toEnum (Integer id) {
+        if(id==null) {
             return null;
         }
 
         for (StatusPedido statusPedido : StatusPedido.values()) {
-            if(codigo.equals(statusPedido.getCodigo())) {
+            if(id.equals(statusPedido.getId())) {
                 return statusPedido;
             }
         }
 
-        throw new IllegalArgumentException(("Id inválido: " + codigo));
+        throw new IllegalArgumentException(("Id inválido: " + id));
     }
 }

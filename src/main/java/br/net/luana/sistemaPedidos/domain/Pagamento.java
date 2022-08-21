@@ -32,7 +32,7 @@ public class Pagamento implements MasterDomain, Serializable {
                      Boolean pagamentoConcluido) {
         this.id = id;
         this.dataPagamento = dataPagamento;
-        this.formaPagamento = (formaPagamento == null) ? null : formaPagamento.getCodigo();
+        this.formaPagamento = (formaPagamento == null) ? null : formaPagamento.getId();
         this.valorPago = valorPago;
         this.pagamentoConcluido = pagamentoConcluido;
     }
@@ -59,7 +59,7 @@ public class Pagamento implements MasterDomain, Serializable {
     }
 
     public void setFormaPagamento(FormaPagamento formaPagamento) {
-        this.formaPagamento = formaPagamento.getCodigo();
+        this.formaPagamento = formaPagamento.getId();
     }
 
     public Double getValorPago() {

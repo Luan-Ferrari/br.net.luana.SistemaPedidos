@@ -1,18 +1,16 @@
 package br.net.luana.sistemaPedidos.dto;
 
 import br.net.luana.sistemaPedidos.domain.*;
-import org.hibernate.validator.constraints.Length;
+import br.net.luana.sistemaPedidos.domain.enums.StatusProduto;
+import br.net.luana.sistemaPedidos.domain.enums.Tamanho;
+import br.net.luana.sistemaPedidos.dto.enums.StatusProdutoDTO;
+import br.net.luana.sistemaPedidos.dto.enums.TamanhoDTO;
+
 import org.springframework.stereotype.Component;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Component
 public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
@@ -20,21 +18,22 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
     private static final long serialVersionUID = 1L;
 
     private ColecaoDTO colecaoDTO = new ColecaoDTO();
-    private TamanhosAceitosDTO tamanhosAceitosDTO = new TamanhosAceitosDTO();
 
     private Integer id;
     private Integer codigoProduto;
+    private String descricao;
+
     private Boolean conjunto;
     private Double valorAtacado;
     private Double valorVarejo;
 
-    private Integer statusProduto;
+    private StatusProdutoDTO statusProduto;
 
     private ClasseProdutoDTO classeProduto = new ClasseProdutoDTO();
 
     private List<ColecaoDTO> colecoes = new ArrayList<>();
 
-    private List<TamanhosAceitosDTO> tamanhosAceitos = new ArrayList<>();
+    private List<TamanhoDTO> tamanhosAceitos = new ArrayList<>();
 
     public ProdutoDTO() {
     }
@@ -42,12 +41,16 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
     public ProdutoDTO(Produto entity) {
         this.id = entity.getId();
         this.codigoProduto = entity.getCodigoProduto();
+        this.descricao = entity.getDescricao();
         this.conjunto = entity.getConjunto();
         this.valorAtacado = entity.getValorAtacado();
         this.valorVarejo = entity.getValorVarejo();
+        this.statusProduto = new StatusProdutoDTO(entity.getStatusProduto());
         this.classeProduto = classeProduto.makeDTO(entity.getClasseProduto());
         this.colecoes = colecaoDTO.makeListDTO(entity.getColecoes());
-        this.tamanhosAceitos = tamanhosAceitosDTO.makeListDTO(entity.getTamanhosAceitos());
+        for(Integer idTamanho : entity.getTamanhosAceitos()) {
+            this.tamanhosAceitos.add(new TamanhoDTO(Tamanho.toEnum(idTamanho)));
+        }
     }
 
     @Override
@@ -60,16 +63,18 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
         Produto produto = new Produto();
         produto.setId(dto.getId());
         produto.setCodigoProduto(dto.getCodigoProduto());
+        produto.setDescricao(dto.getDescricao());
         produto.setConjunto(dto.getConjunto());
         produto.setValorAtacado(dto.getValorAtacado());
         produto.setValorVarejo(dto.getValorVarejo());
+        produto.setStatusProduto(StatusProduto.toEnum(dto.getStatusProduto().getId()));
         produto.setClasseProduto(classeProduto.makeEntityFromDTO(dto.getClasseProduto()));
         for (ColecaoDTO colecaoDTO : dto.getColecoes()) {
             produto.getColecoes().add(colecaoDTO.makeEntityFromDTO(colecaoDTO));
         }
-//        for (TamanhosAceitosDTO tamanhosAceitosDTO : dto.getTamanhosAceitos()) {
-//            produto.getTamanhosAceitos().add(tamanhosAceitosDTO.makeEntityFromDTO(tamanhosAceitosDTO));
-//        }
+        for (TamanhoDTO tamanhoAceitoDTO : dto.getTamanhosAceitos()) {
+            produto.getTamanhosAceitos().add(tamanhoAceitoDTO.getId());
+        }
 
         return produto;
     }
@@ -88,6 +93,14 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
 
     public void setCodigoProduto(Integer codigoProduto) {
         this.codigoProduto = codigoProduto;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Boolean getConjunto() {
@@ -114,11 +127,11 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
         this.valorVarejo = valorVarejo;
     }
 
-    public Integer getStatusProduto() {
+    public StatusProdutoDTO getStatusProduto() {
         return statusProduto;
     }
 
-    public void setStatusProduto(Integer statusProduto) {
+    public void setStatusProduto(StatusProdutoDTO statusProduto) {
         this.statusProduto = statusProduto;
     }
 
@@ -138,11 +151,11 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
         this.colecoes = colecoes;
     }
 
-    public List<TamanhosAceitosDTO> getTamanhosAceitos() {
+    public List<TamanhoDTO> getTamanhosAceitos() {
         return tamanhosAceitos;
     }
 
-    public void setTamanhosAceitos(List<TamanhosAceitosDTO> tamanhosAceitos) {
+    public void setTamanhosAceitos(List<TamanhoDTO> tamanhosAceitos) {
         this.tamanhosAceitos = tamanhosAceitos;
     }
 }

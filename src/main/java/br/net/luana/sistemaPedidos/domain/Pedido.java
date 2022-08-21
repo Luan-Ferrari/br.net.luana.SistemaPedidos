@@ -1,7 +1,6 @@
 package br.net.luana.sistemaPedidos.domain;
 
 import br.net.luana.sistemaPedidos.domain.enums.StatusPedido;
-import br.net.luana.sistemaPedidos.domain.enums.TipoContato;
 import br.net.luana.sistemaPedidos.domain.enums.TipoPedido;
 
 import javax.persistence.*;
@@ -52,11 +51,11 @@ public class Pedido implements MasterDomain, Serializable {
     public Pedido(Integer id, TipoPedido tipoPedido, LocalDate dataPedido, LocalDate dataPrevisao,
                   LocalDate dataEntrega, StatusPedido statusPedido, Integer pacote) {
         this.id = id;
-        this.tipoPedido = (tipoPedido == null) ? null : tipoPedido.getCodigo();
+        this.tipoPedido = (tipoPedido == null) ? null : tipoPedido.getId();
         this.dataPedido = dataPedido;
         this.dataPrevisao = dataPrevisao;
         this.dataEntrega = dataEntrega;
-        this.statusPedido = (statusPedido == null) ? null : statusPedido.getCodigo();
+        this.statusPedido = (statusPedido == null) ? null : statusPedido.getId();
         this.pacote = pacote;
     }
 
@@ -74,7 +73,7 @@ public class Pedido implements MasterDomain, Serializable {
     }
 
     public void setTipoPedido(TipoPedido tipoPedido) {
-        this.tipoPedido = tipoPedido.getCodigo();
+        this.tipoPedido = tipoPedido.getId();
     }
 
     public LocalDate getDataPedido() {
@@ -106,7 +105,7 @@ public class Pedido implements MasterDomain, Serializable {
     }
 
     public void setStatusPedido(StatusPedido statusPedido) {
-        this.statusPedido = statusPedido.getCodigo();
+        this.statusPedido = statusPedido.getId();
     }
 
     public Integer getPacote() {

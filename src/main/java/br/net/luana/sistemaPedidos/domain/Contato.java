@@ -29,7 +29,7 @@ public class Contato implements MasterDomain, Serializable {
         this.id = id;
         this.ddd = ddd;
         this.contato = contato;
-        this.tipoContato = (tipoContato == null) ? null : tipoContato.getCodigo();
+        this.tipoContato = (tipoContato == null) ? null : tipoContato.getId();
     }
 
     @Override
@@ -70,7 +70,7 @@ public class Contato implements MasterDomain, Serializable {
     }
 
     public void setTipoContato(TipoContato tipoContato) {
-        this.tipoContato = tipoContato.getCodigo();
+        this.tipoContato = tipoContato.getId();
     }
 
     @Override

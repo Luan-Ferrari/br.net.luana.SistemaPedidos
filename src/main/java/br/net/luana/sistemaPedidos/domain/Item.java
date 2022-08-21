@@ -58,12 +58,12 @@ public class Item implements MasterDomain, Serializable {
                 Tamanho tamanhoSecundario, Cor corPrincipal, Cor corSecundaria, String textoLivre,
                 Double valor, Double acrescimo, Double desconto, Estoque estoque) {
         this.id = id;
-        this.statusItem = (statusItem == null) ? null : statusItem.getCodigo();
+        this.statusItem = (statusItem == null) ? null : statusItem.getId();
         this.dataStatus = dataStatus;
         this.produto = produto;
         this.referenciaPrincipal = referenciaPrincipal;
-        this.tamanhoPrincipal = (tamanhoPrincipal == null) ? null : tamanhoPrincipal.getCodigo();
-        this.tamanhoSecundario = (tamanhoSecundario == null) ? null : tamanhoSecundario.getCodigo();
+        this.tamanhoPrincipal = (tamanhoPrincipal == null) ? null : tamanhoPrincipal.getId();
+        this.tamanhoSecundario = (tamanhoSecundario == null) ? null : tamanhoSecundario.getId();
         this.corPrincipal = corPrincipal;
         this.textoLivre = textoLivre;
         this.valor = valor;
@@ -94,7 +94,7 @@ public class Item implements MasterDomain, Serializable {
     }
 
     public void setStatusItem(StatusItem statusItem) {
-        this.statusItem = (statusItem == null) ? null : statusItem.getCodigo();
+        this.statusItem = (statusItem == null) ? null : statusItem.getId();
     }
 
     public LocalDate getDataStatus() {
@@ -134,7 +134,7 @@ public class Item implements MasterDomain, Serializable {
     }
 
     public void setTamanhoPrincipal(Tamanho tamanhoPrincipal) {
-        this.tamanhoPrincipal = (tamanhoPrincipal == null) ? null : tamanhoPrincipal.getCodigo();
+        this.tamanhoPrincipal = (tamanhoPrincipal == null) ? null : tamanhoPrincipal.getId();
     }
 
     public Tamanho getTamanhoSecundario() {
@@ -142,7 +142,7 @@ public class Item implements MasterDomain, Serializable {
     }
 
     public void setTamanhoSecundario(Tamanho tamanhoSecundario) {
-        this.tamanhoSecundario = (tamanhoSecundario == null) ? null : tamanhoSecundario.getCodigo();
+        this.tamanhoSecundario = (tamanhoSecundario == null) ? null : tamanhoSecundario.getId();
     }
 
     public Cor getCorPrincipal() {

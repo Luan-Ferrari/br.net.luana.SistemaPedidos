@@ -1,14 +1,9 @@
 package br.net.luana.sistemaPedidos.dto;
 
-import br.net.luana.sistemaPedidos.domain.Acerto;
 import br.net.luana.sistemaPedidos.domain.HistoricoStatusItem;
-import br.net.luana.sistemaPedidos.domain.Item;
 import br.net.luana.sistemaPedidos.domain.enums.StatusItem;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Component
@@ -33,9 +28,9 @@ public class HistoricoStatusItemDTO extends MasterDTOImpl<HistoricoStatusItem, H
         this.id = entity.getId();
         this.item = item.makeDTO(entity.getItem());
         this.dataHoraStatusAnterior = entity.getDataHoraStatusAnterior();
-        this.statusAnterior = (entity.getStatusAnterior() == null) ? null : entity.getStatusAnterior().getCodigo();
+        this.statusAnterior = (entity.getStatusAnterior() == null) ? null : entity.getStatusAnterior().getId();
         this.dataHoraStatusAtual = entity.getDataHoraStatusAtual();
-        this.statusAtual = (entity.getStatusAtual() == null) ? null : entity.getStatusAtual().getCodigo();
+        this.statusAtual = (entity.getStatusAtual() == null) ? null : entity.getStatusAtual().getId();
         this.motivo = entity.getMotivo();
     }
 

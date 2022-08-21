@@ -19,6 +19,9 @@ public class Usuario implements MasterDomain, Serializable {
     private String nomeUsuario;
     private String senha;
 
+    private String nome;
+    private String sobrenome;
+
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name="PERFIS")
     private Set<Integer> perfis = new HashSet<>();
@@ -27,10 +30,12 @@ public class Usuario implements MasterDomain, Serializable {
         addPerfil(Perfil.USUARIO);
     }
 
-    public Usuario(Integer id, String nomeUsuario, String senha) {
+    public Usuario(Integer id, String nomeUsuario, String senha, String nome, String sobrenome) {
         this.id = id;
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
         addPerfil(Perfil.USUARIO);
     }
 
@@ -59,12 +64,28 @@ public class Usuario implements MasterDomain, Serializable {
         this.senha = senha;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
     public Set<Perfil> getPerfis() {
         return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
     }
 
     public void addPerfil(Perfil perfil) {
-        perfis.add(perfil.getCodigo());
+        perfis.add(perfil.getId());
     }
 
     @Override

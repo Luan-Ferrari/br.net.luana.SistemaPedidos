@@ -49,13 +49,13 @@ public class ItemDTO extends MasterDTOImpl<Item, ItemDTO, Integer>
 
     public ItemDTO(Item entity) {
         this.id = entity.getId();
-        this.statusItem = (entity.getStatusItem() == null) ? null : entity.getStatusItem().getCodigo();
+        this.statusItem = (entity.getStatusItem() == null) ? null : entity.getStatusItem().getId();
         this.dataStatus = entity.getDataStatus();
         this.produto = produto.makeDTO(entity.getProduto());
         this.referenciaPrincipal = referenciaPrincipal.makeDTO(entity.getReferenciaPrincipal());
         this.referenciaSecundaria = referenciaSecundaria.makeDTO(entity.getReferenciaSecundaria());
-        this.tamanhoPrincipal = (entity.getTamanhoPrincipal() == null) ? null : entity.getTamanhoPrincipal().getCodigo();
-        this.tamanhoSecundario = (entity.getTamanhoSecundario() == null) ? null : entity.getTamanhoSecundario().getCodigo();
+        this.tamanhoPrincipal = (entity.getTamanhoPrincipal() == null) ? null : entity.getTamanhoPrincipal().getId();
+        this.tamanhoSecundario = (entity.getTamanhoSecundario() == null) ? null : entity.getTamanhoSecundario().getId();
         this.corPrincipal = corPrincipal.makeDTO(entity.getCorPrincipal());
         this.corSecundaria = corSecundaria.makeDTO(entity.getCorSecundaria());
         this.textoLivre = entity.getTextoLivre();

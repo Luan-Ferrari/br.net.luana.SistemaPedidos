@@ -7,33 +7,33 @@ public enum StatusProduto {
     desenvolvimento(3, "Em Desenvolvimento");
 
 
-    private int codigo;
+    private int id;
     private String descricao;
 
-    StatusProduto(int codigo, String descricao) {
-        this.codigo = codigo;
+    StatusProduto(int id, String descricao) {
+        this.id = id;
         this.descricao = descricao;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public static StatusProduto toEnum (Integer codigo) {
-        if(codigo==null) {
+    public static StatusProduto toEnum (Integer id) {
+        if(id==null) {
             return null;
         }
 
         for (StatusProduto statusProduto : StatusProduto.values()) {
-            if(codigo.equals(statusProduto.getCodigo())) {
+            if(id.equals(statusProduto.getId())) {
                 return statusProduto;
             }
         }
 
-        throw new IllegalArgumentException(("Id inválido: " + codigo));
+        throw new IllegalArgumentException(("Id inválido: " + id));
     }
 }

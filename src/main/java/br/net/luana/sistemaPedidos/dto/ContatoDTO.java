@@ -17,7 +17,7 @@ public class ContatoDTO extends MasterDTOImpl <Contato, ContatoDTO, Integer> {
     public ContatoDTO(Contato entity) {
         this.ddd = entity.getDdd();
         this.contato = entity.getContato();
-        this.tipoContato = (entity.getTipoContato()==null) ? null : entity.getTipoContato().getCodigo();
+        this.tipoContato = (entity.getTipoContato()==null) ? null : entity.getTipoContato().getId();
     }
 
     @Override

@@ -23,7 +23,7 @@ public class PagamentoDTO extends MasterDTOImpl<Pagamento, PagamentoDTO, Integer
     public PagamentoDTO(Pagamento entity) {
         this.id = entity.getId();
         this.dataPagamento = entity.getDataPagamento();
-        this.formaPagamento = (entity.getFormaPagamento() == null) ? null : entity.getFormaPagamento().getCodigo();
+        this.formaPagamento = (entity.getFormaPagamento() == null) ? null : entity.getFormaPagamento().getId();
         this.valorPago = entity.getValorPago();
         this.pagamentoConcluido = entity.getPagamentoConcluido();
     }

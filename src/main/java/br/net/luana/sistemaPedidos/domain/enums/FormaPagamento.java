@@ -11,33 +11,33 @@ public enum FormaPagamento {
     cheques(7, "Cheques");
 
 
-    private int codigo;
+    private int id;
     private String descricao;
 
-    FormaPagamento(int codigo, String descricao) {
-        this.codigo = codigo;
+    FormaPagamento(int id, String descricao) {
+        this.id = id;
         this.descricao = descricao;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public static FormaPagamento toEnum (Integer codigo) {
-        if(codigo==null) {
+    public static FormaPagamento toEnum (Integer id) {
+        if(id==null) {
             return null;
         }
 
         for (FormaPagamento formaPagamento : FormaPagamento.values()) {
-            if(codigo.equals(formaPagamento.getCodigo())) {
+            if(id.equals(formaPagamento.getId())) {
                 return formaPagamento;
             }
         }
 
-        throw new IllegalArgumentException(("Id inválido: " + codigo));
+        throw new IllegalArgumentException(("Id inválido: " + id));
     }
 }

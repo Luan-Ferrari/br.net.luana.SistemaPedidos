@@ -15,33 +15,33 @@ public enum StatusItem {
     descartado(11, "Descartado");
 
 
-    private int codigo;
+    private int id;
     private String descricao;
 
-    StatusItem(int codigo, String descricao) {
-        this.codigo = codigo;
+    StatusItem(int id, String descricao) {
+        this.id = id;
         this.descricao = descricao;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public static StatusItem toEnum (Integer codigo) {
-        if(codigo==null) {
+    public static StatusItem toEnum (Integer id) {
+        if(id==null) {
             return null;
         }
 
         for (StatusItem statusItem : StatusItem.values()) {
-            if(codigo.equals(statusItem.getCodigo())) {
+            if(id.equals(statusItem.getId())) {
                 return statusItem;
             }
         }
 
-        throw new IllegalArgumentException(("Id inválido: " + codigo));
+        throw new IllegalArgumentException(("Id inválido: " + id));
     }
 }

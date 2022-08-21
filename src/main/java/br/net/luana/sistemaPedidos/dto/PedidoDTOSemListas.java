@@ -28,11 +28,11 @@ public class PedidoDTOSemListas extends MasterDTOImpl<Pedido, PedidoDTOSemListas
 
     public PedidoDTOSemListas(Pedido entity) {
         this.id = entity.getId();
-        this.tipoPedido = (entity.getTipoPedido() == null) ? null : entity.getTipoPedido().getCodigo();
+        this.tipoPedido = (entity.getTipoPedido() == null) ? null : entity.getTipoPedido().getId();
         this.dataPedido = entity.getDataPedido();
         this.dataPrevisao = entity.getDataPrevisao();
         this.dataEntrega = entity.getDataEntrega();
-        this.statusPedido = (entity.getStatusPedido() == null ? null : entity.getStatusPedido().getCodigo());
+        this.statusPedido = (entity.getStatusPedido() == null ? null : entity.getStatusPedido().getId());
         this.pacote = entity.getPacote();
     }
 
