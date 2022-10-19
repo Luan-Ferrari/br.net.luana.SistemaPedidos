@@ -6,6 +6,7 @@ import br.net.luana.sistemaPedidos.domain.enums.Tamanho;
 import br.net.luana.sistemaPedidos.dto.enums.StatusProdutoDTO;
 import br.net.luana.sistemaPedidos.dto.enums.TamanhoDTO;
 
+import br.net.luana.sistemaPedidos.service.validations.ProdutoInsert;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@ProdutoInsert
 public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
         implements Serializable {
     private static final long serialVersionUID = 1L;

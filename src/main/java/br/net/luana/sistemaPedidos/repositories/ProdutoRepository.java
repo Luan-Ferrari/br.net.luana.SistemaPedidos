@@ -5,4 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProdutoRepository extends MasterRepository<Produto, Integer> {
+
+    Produto findByCodigoProduto(Integer codigo);
 }
