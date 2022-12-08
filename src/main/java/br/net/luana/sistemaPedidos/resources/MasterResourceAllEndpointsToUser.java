@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 public interface MasterResourceAllEndpointsToUser<T extends MasterDomain, D extends MasterDTO, ID extends Integer> {
 
     @GetMapping
@@ -26,6 +27,7 @@ public interface MasterResourceAllEndpointsToUser<T extends MasterDomain, D exte
 
     @PostMapping
     public abstract ResponseEntity<Void> insert(@Valid @RequestBody D dto);
+
 
     @PutMapping("/{entityId}")
     public abstract ResponseEntity<Void> update(@RequestBody D dto, @PathVariable ID entityId);

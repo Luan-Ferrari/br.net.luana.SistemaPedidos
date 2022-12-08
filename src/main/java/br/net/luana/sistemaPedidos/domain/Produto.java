@@ -24,6 +24,8 @@ public class Produto implements MasterDomain, Serializable {
 
     private Integer statusProduto;
 
+    private Boolean adulto;
+
     @ManyToMany
     @JoinTable(name = "PRODUTO_COLECAO",
             joinColumns = @JoinColumn(name = "produto_id"),
@@ -46,7 +48,7 @@ public class Produto implements MasterDomain, Serializable {
     }
 
     public Produto(Integer id, Integer codigoProduto, String descricao, Boolean conjunto, Double valorAtacado, Double valorVarejo,
-                   StatusProduto statusProduto) {
+                   StatusProduto statusProduto, Boolean adulto) {
         this.id = id;
         this.codigoProduto = codigoProduto;
         this.descricao = descricao;
@@ -54,6 +56,7 @@ public class Produto implements MasterDomain, Serializable {
         this.valorAtacado = valorAtacado;
         this.valorVarejo = valorVarejo;
         this.statusProduto = (statusProduto == null) ? null : statusProduto.getId();
+        this.adulto = adulto;
     }
 
     @Override
@@ -111,6 +114,14 @@ public class Produto implements MasterDomain, Serializable {
 
     public void setStatusProduto(StatusProduto statusProduto) {
         this.statusProduto = (statusProduto == null) ? null : statusProduto.getId();
+    }
+
+    public Boolean getAdulto() {
+        return adulto;
+    }
+
+    public void setAdulto(Boolean adulto) {
+        this.adulto = adulto;
     }
 
     public List<Colecao> getColecoes() {

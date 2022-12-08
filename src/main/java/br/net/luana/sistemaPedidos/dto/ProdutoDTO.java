@@ -31,6 +31,8 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
 
     private StatusProdutoDTO statusProduto;
 
+    private Boolean adulto;
+
     private ClasseProdutoDTO classeProduto = new ClasseProdutoDTO();
 
     private List<ColecaoDTO> colecoes = new ArrayList<>();
@@ -48,6 +50,7 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
         this.valorAtacado = entity.getValorAtacado();
         this.valorVarejo = entity.getValorVarejo();
         this.statusProduto = new StatusProdutoDTO(entity.getStatusProduto());
+        this.adulto = entity.getAdulto();
         this.classeProduto = classeProduto.makeDTO(entity.getClasseProduto());
         this.colecoes = colecaoDTO.makeListDTO(entity.getColecoes());
         for(Integer idTamanho : entity.getTamanhosAceitos()) {
@@ -70,12 +73,13 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
         produto.setValorAtacado(dto.getValorAtacado());
         produto.setValorVarejo(dto.getValorVarejo());
         produto.setStatusProduto(StatusProduto.toEnum(dto.getStatusProduto().getId()));
+        produto.setAdulto(dto.getAdulto());
         produto.setClasseProduto(classeProduto.makeEntityFromDTO(dto.getClasseProduto()));
         for (ColecaoDTO colecaoDTO : dto.getColecoes()) {
             produto.getColecoes().add(colecaoDTO.makeEntityFromDTO(colecaoDTO));
         }
         for (TamanhoDTO tamanhoAceitoDTO : dto.getTamanhosAceitos()) {
-            produto.getTamanhosAceitos().add(tamanhoAceitoDTO.getId());
+            produto.getTamanhosAceitos().add(Tamanho.toEnum(tamanhoAceitoDTO.getId()).getId());
         }
 
         return produto;
@@ -135,6 +139,14 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
 
     public void setStatusProduto(StatusProdutoDTO statusProduto) {
         this.statusProduto = statusProduto;
+    }
+
+    public Boolean getAdulto() {
+        return adulto;
+    }
+
+    public void setAdulto(Boolean adulto) {
+        this.adulto = adulto;
     }
 
     public ClasseProdutoDTO getClasseProduto() {
