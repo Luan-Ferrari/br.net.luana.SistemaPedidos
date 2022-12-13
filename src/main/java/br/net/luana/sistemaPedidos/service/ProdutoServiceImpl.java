@@ -34,6 +34,9 @@ public class ProdutoServiceImpl extends MasterServiceImpl<Produto, Integer>
             if (entity.getCodigoProduto() != null && entity.getCodigoProduto().toString() != "") {
                 updateEntity.setCodigoProduto(entity.getCodigoProduto());
             }
+            if (entity.getDescricao() != null) {
+                updateEntity.setDescricao(entity.getDescricao());
+            }
             if (entity.getConjunto() != null) {
                 updateEntity.setConjunto(entity.getConjunto());
             }

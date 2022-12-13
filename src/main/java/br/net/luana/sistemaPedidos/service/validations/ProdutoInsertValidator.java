@@ -1,6 +1,7 @@
 package br.net.luana.sistemaPedidos.service.validations;
 
 import br.net.luana.sistemaPedidos.domain.Produto;
+import br.net.luana.sistemaPedidos.domain.enums.StatusProduto;
 import br.net.luana.sistemaPedidos.dto.ProdutoDTO;
 import br.net.luana.sistemaPedidos.repositories.ProdutoRepository;
 import br.net.luana.sistemaPedidos.resources.exceptions.FieldMessage;
@@ -20,9 +21,11 @@ public class ProdutoInsertValidator implements ConstraintValidator<ProdutoInsert
     public boolean isValid(ProdutoDTO dto, ConstraintValidatorContext context) {
         List<FieldMessage> list = new ArrayList<>();
 
-        Produto aux = repository.findByCodigoProduto(dto.getCodigoProduto());
-        if (aux != null) {
-            list.add(new FieldMessage("codigoProduto", "Código já Cadastrado"));
+        if(StatusProduto.toEnum(dto.getStatusProduto().getId()) == StatusProduto.ativo) {
+            Produto aux = repository.findByCodigoProdutoAndStatusProduto(dto.getCodigoProduto(), 1);
+            if (aux != null) {
+                list.add(new FieldMessage("codigoProduto", "Código já cadastrado em produto ativo"));
+            }
         }
 
         for (FieldMessage e: list) {
