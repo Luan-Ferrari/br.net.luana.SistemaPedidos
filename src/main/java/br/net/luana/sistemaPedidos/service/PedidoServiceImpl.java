@@ -9,7 +9,7 @@ public class PedidoServiceImpl extends MasterServiceImpl<Pedido, Integer>
 
 
     @Override
-    protected void updateData(Pedido updateEntity, Pedido entity) {
-
+    protected boolean updateData(Pedido updateEntity, Pedido entity) {
+        return false;
     }
 }

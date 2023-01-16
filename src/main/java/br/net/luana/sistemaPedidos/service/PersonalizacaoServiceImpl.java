@@ -61,7 +61,7 @@ public class PersonalizacaoServiceImpl extends MasterServiceImpl<Personalizacao,
     }
 
     @Override
-    protected void updateData(Personalizacao updateEntity, Personalizacao entity) {
-
+    protected boolean updateData(Personalizacao updateEntity, Personalizacao entity) {
+        return false;
     }
 }

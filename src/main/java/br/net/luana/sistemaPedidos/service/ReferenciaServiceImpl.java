@@ -17,7 +17,7 @@ public class ReferenciaServiceImpl extends MasterServiceImpl<Referencia, Integer
 
 
     @Override
-    protected void updateData(Referencia updateEntity, Referencia entity) {
-
+    protected boolean updateData(Referencia updateEntity, Referencia entity) {
+        return false;
     }
 }

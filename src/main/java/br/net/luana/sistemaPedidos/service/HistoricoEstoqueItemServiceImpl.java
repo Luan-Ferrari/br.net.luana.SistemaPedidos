@@ -9,7 +9,7 @@ public class HistoricoEstoqueItemServiceImpl extends MasterServiceImpl<Historico
 
 
     @Override
-    protected void updateData(HistoricoEstoqueItem updateEntity, HistoricoEstoqueItem entity) {
-
+    protected boolean updateData(HistoricoEstoqueItem updateEntity, HistoricoEstoqueItem entity) {
+        return false;
     }
 }

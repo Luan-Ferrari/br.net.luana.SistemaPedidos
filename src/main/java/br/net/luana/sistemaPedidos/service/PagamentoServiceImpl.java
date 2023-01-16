@@ -9,7 +9,7 @@ public class PagamentoServiceImpl extends MasterServiceImpl<Pagamento, Integer>
 
 
     @Override
-    protected void updateData(Pagamento updateEntity, Pagamento entity) {
-
+    protected boolean updateData(Pagamento updateEntity, Pagamento entity) {
+        return false;
     }
 }

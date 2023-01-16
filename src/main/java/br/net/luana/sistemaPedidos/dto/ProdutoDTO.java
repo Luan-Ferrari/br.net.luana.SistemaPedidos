@@ -72,9 +72,9 @@ public class ProdutoDTO extends MasterDTOImpl<Produto, ProdutoDTO, Integer>
         produto.setConjunto(dto.getConjunto());
         produto.setValorAtacado(dto.getValorAtacado());
         produto.setValorVarejo(dto.getValorVarejo());
-        produto.setStatusProduto(StatusProduto.toEnum(dto.getStatusProduto().getId()));
+        produto.setStatusProduto((dto.getStatusProduto() != null) ? StatusProduto.toEnum(dto.getStatusProduto().getId()) : null);
         produto.setAdulto(dto.getAdulto());
-        produto.setClasseProduto(classeProduto.makeEntityFromDTO(dto.getClasseProduto()));
+        produto.setClasseProduto((dto.getClasseProduto() != null) ? classeProduto.makeEntityFromDTO(dto.getClasseProduto()) : null);
         for (ColecaoDTO colecaoDTO : dto.getColecoes()) {
             produto.getColecoes().add(colecaoDTO.makeEntityFromDTO(colecaoDTO));
         }

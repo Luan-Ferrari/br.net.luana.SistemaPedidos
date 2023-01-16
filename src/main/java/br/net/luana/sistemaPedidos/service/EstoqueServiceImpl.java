@@ -9,7 +9,7 @@ public class EstoqueServiceImpl extends MasterServiceImpl<Estoque, Integer>
 
 
     @Override
-    protected void updateData(Estoque updateEntity, Estoque entity) {
-
+    protected boolean updateData(Estoque updateEntity, Estoque entity) {
+        return false;
     }
 }

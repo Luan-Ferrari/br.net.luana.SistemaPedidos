@@ -9,7 +9,7 @@ public class AcertoServiceImpl extends MasterServiceImpl<Acerto, Integer>
 
 
     @Override
-    protected void updateData(Acerto updateEntity, Acerto entity) {
-
+    protected boolean updateData(Acerto updateEntity, Acerto entity) {
+        return false;
     }
 }

@@ -30,7 +30,7 @@ public interface MasterResourceAllEndpointsToUser<T extends MasterDomain, D exte
 
 
     @PutMapping("/{entityId}")
-    public abstract ResponseEntity<Void> update(@RequestBody D dto, @PathVariable ID entityId);
+    public abstract ResponseEntity<Void> update(@Valid @RequestBody D dto, @PathVariable ID entityId);
 
     @DeleteMapping("/{entityId}")
     public abstract ResponseEntity<Void> delete(@PathVariable ID entityId);

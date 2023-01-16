@@ -15,7 +15,7 @@ public class OpcaoServiceImpl extends MasterServiceImpl<Opcao, Integer>
     public OpcaoServiceImpl(OpcaoRepository opcaoRepository) {super(opcaoRepository);}
 
     @Override
-    protected void updateData(Opcao updateEntity, Opcao entity) {
-
+    protected boolean updateData(Opcao updateEntity, Opcao entity) {
+        return false;
     }
 }

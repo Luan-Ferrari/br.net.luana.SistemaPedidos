@@ -37,7 +37,7 @@ public class ClienteServiceImpl extends MasterServiceImpl<Cliente, Integer>
     }
 
     @Override
-    protected void updateData(Cliente updateEntity, Cliente entity) {
-
+    protected boolean updateData(Cliente updateEntity, Cliente entity) {
+        return false;
     }
 }

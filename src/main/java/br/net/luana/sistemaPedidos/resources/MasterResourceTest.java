@@ -28,7 +28,7 @@ public interface MasterResourceTest<T extends MasterDomain, D extends MasterDTO,
     public abstract ResponseEntity<Void> insert(@Valid @RequestBody String json, @RequestBody D dto);
 
     @PutMapping("/{entityId}")
-    public abstract ResponseEntity<Void> update(@RequestBody D dto, @PathVariable ID entityId);
+    public abstract ResponseEntity<Void> update(@Valid @RequestBody D dto, @PathVariable ID entityId);
 
     @DeleteMapping("/{entityId}")
     public abstract ResponseEntity<Void> delete(@PathVariable ID entityId);

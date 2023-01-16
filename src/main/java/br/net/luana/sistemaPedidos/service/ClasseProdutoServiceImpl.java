@@ -46,7 +46,7 @@ public class ClasseProdutoServiceImpl extends MasterServiceImpl<ClasseProduto, I
     }
 
     @Override
-    protected void updateData(ClasseProduto updateEntity, ClasseProduto entity) {
-
+    protected boolean updateData(ClasseProduto updateEntity, ClasseProduto entity) {
+        return false;
     }
 }

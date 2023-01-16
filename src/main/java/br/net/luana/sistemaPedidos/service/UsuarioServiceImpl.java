@@ -53,7 +53,7 @@ public class UsuarioServiceImpl extends MasterServiceImpl<Usuario, Integer>
     }
 
     @Override
-    protected void updateData(Usuario updateEntity, Usuario entity) {
+    protected boolean updateData(Usuario updateEntity, Usuario entity) {
         UserSS user = authenticated();
         if(entity.getSenha() != null ) {
             updateEntity.setSenha(entity.getSenha());
@@ -63,5 +63,6 @@ public class UsuarioServiceImpl extends MasterServiceImpl<Usuario, Integer>
         } else {
             throw new AuthorizationException();
         }
+        return true;
     }
 }

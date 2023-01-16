@@ -19,7 +19,7 @@ public class CorServiceImpl extends MasterServiceImpl<Cor, Integer>
 
 
     @Override
-    protected void updateData(Cor updateEntity, Cor entity) {
-
+    protected boolean updateData(Cor updateEntity, Cor entity) {
+        return false;
     }
 }

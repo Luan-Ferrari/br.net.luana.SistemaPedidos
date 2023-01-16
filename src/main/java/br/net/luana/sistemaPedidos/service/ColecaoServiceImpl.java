@@ -61,8 +61,6 @@ public class ColecaoServiceImpl extends MasterServiceImpl<Colecao, Integer>
         } else {
             throw new NumeracaoRepetidaException(numerosDuplicados);
         }
-
-
     }
 
     @Override
@@ -77,7 +75,6 @@ public class ColecaoServiceImpl extends MasterServiceImpl<Colecao, Integer>
                     colecaoCorRepository.delete(cc);
                 }
             }
-
         }
     }
 
@@ -99,7 +96,7 @@ public class ColecaoServiceImpl extends MasterServiceImpl<Colecao, Integer>
 
 
     @Override
-    protected void updateData(Colecao updateEntity, Colecao entity) {
-
+    protected boolean updateData(Colecao updateEntity, Colecao entity) {
+        return false;
     }
 }

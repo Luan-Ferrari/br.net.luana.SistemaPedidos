@@ -24,7 +24,11 @@ public class ProdutoInsertValidator implements ConstraintValidator<ProdutoInsert
         if(StatusProduto.toEnum(dto.getStatusProduto().getId()) == StatusProduto.ativo) {
             Produto aux = repository.findByCodigoProdutoAndStatusProduto(dto.getCodigoProduto(), 1);
             if (aux != null) {
-                list.add(new FieldMessage("codigoProduto", "Código já cadastrado em produto ativo"));
+                System.out.println(aux.getId());
+                System.out.println(dto.getId());
+                if(!aux.getId().equals(dto.getId())) {
+                    list.add(new FieldMessage("codigoProduto", "Código já cadastrado em produto ativo"));
+                }
             }
         }
 

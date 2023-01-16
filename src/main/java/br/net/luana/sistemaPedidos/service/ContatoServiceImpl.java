@@ -28,7 +28,7 @@ public class ContatoServiceImpl extends MasterServiceImpl<Contato, Integer>
 
 
     @Override
-    protected void updateData(Contato updateEntity, Contato entity) {
-
+    protected boolean updateData(Contato updateEntity, Contato entity) {
+        return false;
     }
 }

@@ -32,7 +32,7 @@ public interface MasterResourceGetAndPutEndpointsToUser<T extends MasterDomain, 
     public abstract ResponseEntity<Void> insert(@Valid @RequestBody D dto);
 
     @PutMapping("/{entityId}")
-    public abstract ResponseEntity<Void> update(@RequestBody D dto, @PathVariable ID entityId);
+    public abstract ResponseEntity<Void> update(@Valid @RequestBody D dto, @PathVariable ID entityId);
 
     @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping("/{entityId}")

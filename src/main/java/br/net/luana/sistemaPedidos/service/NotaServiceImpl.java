@@ -9,7 +9,7 @@ public class NotaServiceImpl extends MasterServiceImpl<Nota, Integer>
 
 
     @Override
-    protected void updateData(Nota updateEntity, Nota entity) {
-
+    protected boolean updateData(Nota updateEntity, Nota entity) {
+        return false;
     }
 }

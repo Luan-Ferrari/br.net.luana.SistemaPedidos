@@ -31,7 +31,7 @@ public interface MasterResourceOnlyGetEndpointToUser<T extends MasterDomain, D e
 
     @PreAuthorize("hasAnyRole('ADMIN')")
     @PutMapping("/{entityId}")
-    public abstract ResponseEntity<Void> update(@RequestBody D dto, @PathVariable ID entityId);
+    public abstract ResponseEntity<Void> update(@Valid @RequestBody D dto, @PathVariable ID entityId);
 
     @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping("/{entityId}")

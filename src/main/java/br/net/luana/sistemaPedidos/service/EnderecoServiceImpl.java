@@ -17,7 +17,7 @@ public class EnderecoServiceImpl extends MasterServiceImpl<Endereco, Integer>
     public EnderecoServiceImpl(EnderecoRepository enderecoRepository) { super(enderecoRepository);}
 
     @Override
-    protected void updateData(Endereco updateEntity, Endereco entity) {
-
+    protected boolean updateData(Endereco updateEntity, Endereco entity) {
+        return false;
     }
 }

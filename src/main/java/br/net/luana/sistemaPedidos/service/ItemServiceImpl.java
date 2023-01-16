@@ -9,7 +9,7 @@ public class ItemServiceImpl extends MasterServiceImpl<Item, Integer>
 
 
     @Override
-    protected void updateData(Item updateEntity, Item entity) {
-
+    protected boolean updateData(Item updateEntity, Item entity) {
+        return false;
     }
 }
